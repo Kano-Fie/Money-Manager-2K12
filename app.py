@@ -1,6 +1,5 @@
 import os
 from flask import Flask, render_template, request, flash, redirect, url_for, session, logging, jsonify, Response
-from flask_mysqldb import MySQL
 from wtforms import Form, StringField, PasswordField, TextAreaField, IntegerField, validators
 from wtforms.validators import DataRequired
 from passlib.hash import sha256_crypt
@@ -17,12 +16,6 @@ app = Flask(__name__, static_url_path='/static')
 
 config = {
     'DEBUG': True,
-    'MYSQL_HOST': 'localhost',
-    'MYSQL_USER': 'root',
-    'MYSQL_PASSWORD': os.getenv('MYSQL_PWD'),
-    'MYSQL_DB': 'tracker',
-    'MYSQL_CURSORCLASS': 'DictCursor',
-    'SECRET_KEY': 'your_secret_key',
     'MAIL_SERVER': 'smtp.googlemail.com',
     'MAIL_PORT': 587,
     'MAIL_USE_TLS': True,
@@ -32,9 +25,7 @@ config = {
 
 app.config.update(config)
 
-mysql = MySQL(app)
 mail = Mail(app)
-
 
 def get_mysql_connector():
     return mysql.connector.connect(
