@@ -1,0 +1,8 @@
+flask
+mysqlclient
+flask-mysqldb
+flask-WTF
+passlib
+timeago
+flask-mail
+plotly
