@@ -17,9 +17,10 @@ app = Flask(__name__, static_url_path='/static')
 
 config = {
     'DEBUG': True,
-    'MYSQL_HOST': 'localhost',
-    'MYSQL_USER': 'root',
-    'MYSQL_PASSWORD': os.getenv('MYSQL_PWD'),
+    'MYSQL_HOST': 'k122.mysql.database.azure.com',
+    'MYSQL_USER': 'k12',
+    'MYSQL_PASSWORD': 'Qwerty123',
+    'MYSQL_PORT': '3306',
     'MYSQL_DB': 'tracker',
     'MYSQL_CURSORCLASS': 'DictCursor',
     'SECRET_KEY': 'your_secret_key',
