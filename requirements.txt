@@ -6,3 +6,4 @@ passlib
 timeago
 flask-mail
 plotly
+email-validator
