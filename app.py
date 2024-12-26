@@ -1,6 +1,6 @@
 import os
+import mysql.connector
 from flask import Flask, render_template, request, flash, redirect, url_for, session, logging, jsonify, Response
-from flask_mysqldb import MySQL
 from wtforms import Form, StringField, PasswordField, TextAreaField, IntegerField, validators
 from wtforms.validators import DataRequired
 from passlib.hash import sha256_crypt
@@ -12,17 +12,15 @@ from itsdangerous import URLSafeTimedSerializer as Serializer
 from flask_mail import Mail, Message
 import plotly.graph_objects as go
 
-
 app = Flask(__name__, static_url_path='/static')
 
 config = {
     'DEBUG': True,
-    'hostname'= 'k122.mysql.database.azure.com'
-    'port'= '3306'
-    'username'= 'k12'
-    'password'= 'Qwerty123'
-    'database'= 'tracker'
-    'MYSQL_CURSORCLASS': 'DictCursor',
+    'hostname': 'k122.mysql.database.azure.com',
+    'port': '3306',
+    'username': 'k12',
+    'password': 'Qwerty123',  # Make sure to secure this in production
+    'database': 'tracker',
     'SECRET_KEY': 'your_secret_key',
     'MAIL_SERVER': 'smtp.googlemail.com',
     'MAIL_PORT': 587,
@@ -33,8 +31,19 @@ config = {
 
 app.config.update(config)
 
-mysql = MySQL(app)
+# Initialize Flask-Mail
 mail = Mail(app)
+
+# Function to get a database connection
+def get_db_connection():
+    return mysql.connector.connect(
+        user=config['k12'],
+        password=config['Qwerty123'],
+        host=config['k122.mysql.database.azure.com'],
+        port=config['3306'],
+        database=config['tracker'],
+        ssl_disabled=False  # Set to True if you want to disable SSL
+    )
 
 
 @app.route('/')
