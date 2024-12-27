@@ -3,11 +3,11 @@
 <div class="container text-light text-center custom-bg">
     <h1 class="mb-4">Aplikasi Pencatat Pengeluaran</h1>
     <h5>Silahkan Login ke akun Anda setelah mendaftar.</h5>
-    <img src="../static/LOGO AKID_putih.png" alt="Deskripsi Gambar" width="130" height="180" style="margin-top: 40px; margin-bottom: 40px;">
+    <img src="{{ url_for('static', filename='LOGO AKID_putih.png') }}" alt="Logo Aplikasi" width="130" height="180" style="margin-top: 40px; margin-bottom: 40px;">
     <h5>Anda dapat melakukan beberapa hal seperti:</h5>
     <div class="row mt-5">
         <div class="col-md-4 mb-4 d-flex">
-            <a href="{% if not user.is_authenticated %}/login{% else %}/addTransactions{% endif %}" class="card bg-dark text-light border-0 shadow-lg hover-shadow flex-fill" style="margin-top: 20px; transition: transform 0.3s; text-decoration: none;" aria-label="Tambah Transaksi">
+            <a href="/login" class="card bg-dark text-light border-0 shadow-lg hover-shadow flex-fill" style="margin-top: 20px; transition: transform 0.3s; text-decoration: none;" aria-label="Tambah Transaksi">
                 <div class="card-body text-center">
                     <h5 class="card-title">Tambah Transaksi</h5>
                     <p class="card-text">Anda dapat menuliskan transaksi apa saja yang Anda lakukan.</p>
@@ -15,7 +15,7 @@
             </a>
         </div>
         <div class="col-md-4 mb-4 d-flex">
-            <a href="{% if not user.is_authenticated %}/login{% else %}/transactionHistory{% endif %}" class="card bg-dark text-light border-0 shadow-lg hover-shadow flex-fill" style="margin-top: 20px; transition: transform 0.3s; text-decoration: none;" aria-label="Riwayat Transaksi">
+            <a href="/login" class="card bg-dark text-light border-0 shadow-lg hover-shadow flex-fill" style="margin-top: 20px; transition: transform 0.3s; text-decoration: none;" aria-label="Riwayat Transaksi">
                 <div class="card-body text-center">
                     <h5 class="card-title">Riwayat Transaksi</h5>
                     <p class="card-text">Lihat semua transaksi yang telah Anda lakukan.</p>
@@ -23,7 +23,7 @@
             </a>
         </div>
         <div class="col-md-4 mb-4 d-flex">
-            <a href="{% if not user.is_authenticated %}/login{% else %}/statistik-pengeluaran{% endif %}" class="card bg-dark text-light border-0 shadow-lg hover-shadow flex-fill" style="margin-top: 20px; transition: transform 0.3s; text-decoration: none;" aria-label="Statistik Pengeluaran">
+            <a href="/login" class="card bg-dark text-light border-0 shadow-lg hover-shadow flex-fill" style="margin-top: 20px; transition: transform 0.3s; text-decoration: none;" aria-label="Statistik Pengeluaran">
                 <div class="card-body text-center">
                     <h5 class="card-title">Statistik Pengeluaran</h5>
                     <p class="card-text">Analisis pengeluaran Anda dengan grafik dan statistik.</p>
